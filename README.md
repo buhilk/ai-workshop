@@ -178,3 +178,17 @@ npx bmad-method install
 ```
 
 Commit `skills-lock.json` after installs or updates so teammates get reproducible skill versions.
+
+---
+
+## Cursor starter prompt
+
+When using a capable parent model for planning and delegation, you can keep costs down by routing implementation work to cheap Composer 2 sub-agents. Always pass `model: "fast"` when launching Task sub-agents — if you omit it, sub-agents inherit the parent's expensive model (for example, `claude-4.6-opus-high`).
+
+In Cursor, the fast model slug is `composer-2.5-fast` (this maps to `model: "fast"` in the Task tool).
+
+Paste this into **Cursor Rules**, **project instructions**, or the start of a chat:
+
+```
+**Always run Composer 2 sub-agents for the actual tasks.** Do not write code, edit files, or run commands yourself -- launch Task sub-agents with `model: "fast"` to do the work. This spawns free Composer 2 sub-agents. Never omit the `model` parameter — without it, sub-agents inherit the parent's expensive model (e.g. claude-4.6-opus-high).
+```
